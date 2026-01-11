@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, RefreshCw, Clock, Users, BookOpen, Home, Sun, CloudRain, Check, Copy } from "lucide-react";
+import { ArrowLeft, RefreshCw, Clock, Users, BookOpen, Sun, CloudRain, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";

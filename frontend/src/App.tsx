@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { useServiceWorker } from "@/hooks/useServiceWorker";
 import { useSystemInsights } from "@/hooks/useSystemInsights";
 import OfflineIndicator from "@/components/OfflineIndicator";
+import PageTransition from "./components/PageTransition";
 import Index from "./pages/Index";
 import SplashScreen from "./pages/SplashScreen";
 import VoiceInput from "./pages/VoiceInput";
@@ -36,24 +37,28 @@ const AppContent = () => {
     <>
       <OfflineIndicator />
       <Routes>
-        {/* Splash Screen as default route */}
+        {/* Splash Screen as default route - no transition */}
         <Route path="/" element={<SplashScreen />} />
-        <Route path="/home" element={<Index />} />
-        <Route path="/voice-input" element={<VoiceInput />} />
-        <Route path="/coaching" element={<Coaching />} />
-        <Route path="/planner" element={<Planner />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/feedback" element={<Feedback />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/certificate" element={<Certificate />} />
-        <Route path="/peer-wisdom" element={<PeerWisdom />} />
-        <Route path="/daily-reflection" element={<DailyReflection />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile-setup" element={<ProfileSetup />} />
-        <Route path="/activity-generator" element={<ContextAwareActivityGenerator />} />
-        <Route path="/parent-bridge" element={<ParentBridge />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
+        
+        {/* Wrap all other routes with page transition */}
+        <Route path="/*" element={<PageTransition />}>
+          <Route path="home" element={<Index />} />
+          <Route path="voice-input" element={<VoiceInput />} />
+          <Route path="coaching" element={<Coaching />} />
+          <Route path="planner" element={<Planner />} />
+          <Route path="resources" element={<Resources />} />
+          <Route path="feedback" element={<Feedback />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="certificate" element={<Certificate />} />
+          <Route path="peer-wisdom" element={<PeerWisdom />} />
+          <Route path="daily-reflection" element={<DailyReflection />} />
+          <Route path="login" element={<Login />} />
+          <Route path="profile-setup" element={<ProfileSetup />} />
+          <Route path="activity-generator" element={<ContextAwareActivityGenerator />} />
+          <Route path="parent-bridge" element={<ParentBridge />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </>
   );

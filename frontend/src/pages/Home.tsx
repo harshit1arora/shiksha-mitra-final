@@ -27,12 +27,12 @@ const Home = () => {
   return (
     <div className="app-container pb-24 bg-gradient-to-b from-background to-background/95">
       {/* Header with Gradient */}
-      <header className="px-5 pt-12 pb-8 bg-gradient-to-r from-primary/95 to-primary rounded-b-3xl shadow-lg">
+      <header className="px-5 pt-12 pb-8 bg-gradient-to-r from-primary to-primary/80 rounded-b-3xl shadow-lg animate-gradient">
         {/* Logo and App Info */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg">
-              <span className="text-2xl font-bold text-white">SM</span>
+            <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-lg border border-white/20 animate-float">
+              <span className="text-3xl font-bold text-white">SM</span>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white">
@@ -58,7 +58,7 @@ const Home = () => {
       <main className="px-5 -mt-4">
         {/* Class Selection */}
         <section className="mb-8 animate-fade-in-up">
-          <div className="bg-white rounded-2xl shadow-xl p-5 border border-border">
+          <div className="bg-card rounded-2xl shadow-xl p-5 border border-border hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
             <h2 className="text-base font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="h-6 w-1 bg-primary rounded-full"></span>
               {t.home.selectClass}
@@ -78,7 +78,7 @@ const Home = () => {
 
         {/* Subject Selection */}
         <section className="mb-8 animate-fade-in-up-delay-1">
-          <div className="bg-white rounded-2xl shadow-xl p-5 border border-border">
+          <div className="bg-card rounded-2xl shadow-xl p-5 border border-border hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
             <h2 className="text-base font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="h-6 w-1 bg-primary rounded-full"></span>
               {t.home.selectSubject}
@@ -111,7 +111,7 @@ const Home = () => {
           <section className="mb-8 animate-fade-in-up-delay-2">
             <Button
               onClick={handleContinue}
-              className="w-full h-16 text-base font-semibold rounded-2xl gap-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="w-full h-16 text-base font-semibold rounded-2xl gap-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 animate-scale-hover"
             >
               {t.home.continueBtn}
               <ArrowRight className="w-5 h-5" />
@@ -131,7 +131,7 @@ const Home = () => {
             {/* Peer Wisdom */}
             <button
               onClick={() => navigate("/peer-wisdom")}
-              className="bg-white rounded-xl shadow-lg p-4 border border-border hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3"
+              className="bg-card rounded-xl shadow-lg p-4 border border-border hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3 hover:border-primary/50 animate-scale-hover"
             >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <Users className="w-6 h-6 text-primary" />
@@ -142,7 +142,7 @@ const Home = () => {
             {/* Daily Reflection */}
             <button
               onClick={() => navigate("/daily-reflection")}
-              className="bg-white rounded-xl shadow-lg p-4 border border-border hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3"
+              className="bg-card rounded-xl shadow-lg p-4 border border-border hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3 hover:border-primary/50 animate-scale-hover"
             >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <Clock className="w-6 h-6 text-primary" />
@@ -153,7 +153,7 @@ const Home = () => {
             {/* Parent Bridge */}
             <button
               onClick={() => navigate("/parent-bridge")}
-              className="bg-white rounded-xl shadow-lg p-4 border border-border hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3"
+              className="bg-card rounded-xl shadow-lg p-4 border border-border hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3 hover:border-primary/50 animate-scale-hover"
             >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <MessageSquare className="w-6 h-6 text-primary" />
@@ -164,7 +164,7 @@ const Home = () => {
             {/* Activity Generator */}
             <button
               onClick={() => navigate("/activity-generator")}
-              className="bg-white rounded-xl shadow-lg p-4 border border-border hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3"
+              className="bg-card rounded-xl shadow-lg p-4 border border-border hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 flex flex-col items-center gap-3 hover:border-primary/50 animate-scale-hover"
             >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <Lightbulb className="w-6 h-6 text-primary" />

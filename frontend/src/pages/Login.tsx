@@ -30,109 +30,117 @@ const Login = () => {
   };
 
   return (
-    <div className="app-container min-h-screen flex flex-col">
+    <div className="app-container min-h-screen flex flex-col bg-gradient-to-b from-background to-background/95">
       {/* Header */}
-      <header className="px-5 pt-16 pb-8 text-center fade-in-up">
-        <div className="w-20 h-20 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-4">
-          <span className="text-3xl font-bold text-primary-foreground">SM</span>
+      <header className="px-5 pt-20 pb-10 text-center animate-fade-in-up">
+        <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mx-auto mb-6 animate-float shadow-xl">
+          <span className="text-4xl font-bold text-primary-foreground">SM</span>
         </div>
-        <h1 className="text-2xl font-bold text-foreground mb-1">
+        <h1 className="text-2xl font-bold text-foreground mb-2">
           {t.login.appName}
         </h1>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground max-w-xs mx-auto">
           {t.login.tagline}
         </p>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 px-5">
-        {step === "phone" ? (
-          <div className="fade-in-up">
-            <h2 className="text-lg font-semibold text-foreground mb-2">
-              Login to continue support
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              This helps us remember your teaching context.
-            </p>
-
-            <div className="relative mb-6">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-muted-foreground">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm font-medium">+91</span>
+        {/* Login Card */}
+        <div className="bg-card rounded-2xl shadow-xl p-6 border border-border hover:shadow-2xl transition-all duration-300 animate-scale-hover">
+          {step === "phone" ? (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-lg font-semibold text-foreground mb-2">
+                  Login to continue support
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  This helps us remember your teaching context.
+                </p>
               </div>
-              <Input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
-                placeholder="98765 43210"
-                className="h-14 pl-20 text-lg"
-              />
-            </div>
 
-            <Button
-              onClick={handleSendOTP}
-              disabled={phone.length !== 10}
-              className="w-full h-14 text-base font-semibold rounded-xl gap-2 mb-4"
-            >
-              {t.login.sendOtp}
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </div>
-        ) : (
-          <div className="fade-in-up">
-            <h2 className="text-lg font-semibold text-foreground mb-2">
-              Enter the 6-digit OTP sent to your phone
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              {t.login.sentTo} +91 {phone}
-            </p>
+              <div className="relative">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-muted-foreground">
+                  <Phone className="w-4 h-4" />
+                  <span className="text-sm font-medium">+91</span>
+                </div>
+                <Input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                  placeholder="98765 43210"
+                  className="h-14 pl-20 text-lg rounded-xl border-border focus:border-primary focus:ring-primary/30"
+                />
+              </div>
 
-            <div className="flex justify-center mb-6">
-              <InputOTP
-                value={otp}
-                onChange={setOtp}
-                maxLength={6}
+              <Button
+                onClick={handleSendOTP}
+                disabled={phone.length !== 10}
+                className="w-full h-14 text-base font-semibold rounded-xl gap-2 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                <InputOTPGroup>
-                  <InputOTPSlot index={0} className="w-12 h-14 text-xl" />
-                  <InputOTPSlot index={1} className="w-12 h-14 text-xl" />
-                  <InputOTPSlot index={2} className="w-12 h-14 text-xl" />
-                  <InputOTPSlot index={3} className="w-12 h-14 text-xl" />
-                  <InputOTPSlot index={4} className="w-12 h-14 text-xl" />
-                  <InputOTPSlot index={5} className="w-12 h-14 text-xl" />
-                </InputOTPGroup>
-              </InputOTP>
+                {t.login.sendOtp}
+                <ArrowRight className="w-5 h-5" />
+              </Button>
             </div>
+          ) : (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-lg font-semibold text-foreground mb-2">
+                  Enter the 6-digit OTP sent to your phone
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  {t.login.sentTo} +91 {phone}
+                </p>
+              </div>
 
-            <Button
-              onClick={handleVerifyOTP}
-              disabled={otp.length !== 6}
-              className="w-full h-14 text-base font-semibold rounded-xl gap-2 mb-4"
-            >
-              {t.login.verifyBtn}
-              <ArrowRight className="w-5 h-5" />
-            </Button>
+              <div className="flex justify-center">
+                <InputOTP
+                  value={otp}
+                  onChange={setOtp}
+                  maxLength={6}
+                  className=""
+                >
+                  <InputOTPGroup className="gap-3">
+                    <InputOTPSlot index={0} className="w-14 h-16 text-xl rounded-xl border-border focus:border-primary focus:ring-primary/30 bg-background" />
+                    <InputOTPSlot index={1} className="w-14 h-16 text-xl rounded-xl border-border focus:border-primary focus:ring-primary/30 bg-background" />
+                    <InputOTPSlot index={2} className="w-14 h-16 text-xl rounded-xl border-border focus:border-primary focus:ring-primary/30 bg-background" />
+                    <InputOTPSlot index={3} className="w-14 h-16 text-xl rounded-xl border-border focus:border-primary focus:ring-primary/30 bg-background" />
+                    <InputOTPSlot index={4} className="w-14 h-16 text-xl rounded-xl border-border focus:border-primary focus:ring-primary/30 bg-background" />
+                    <InputOTPSlot index={5} className="w-14 h-16 text-xl rounded-xl border-border focus:border-primary focus:ring-primary/30 bg-background" />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
 
-            <div className="flex justify-between items-center">
-              <button
-                onClick={() => setStep("phone")}
-                className="text-sm text-primary font-medium"
+              <Button
+                onClick={handleVerifyOTP}
+                disabled={otp.length !== 6}
+                className="w-full h-14 text-base font-semibold rounded-xl gap-2 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                {t.login.changePhone}
-              </button>
-              <button
-                onClick={() => {}}
-                className="text-sm text-primary font-medium"
-              >
-                Resend OTP
-              </button>
+                {t.login.verifyBtn}
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+
+              <div className="flex justify-between items-center pt-2">
+                <button
+                  onClick={() => setStep("phone")}
+                  className="text-sm text-primary font-medium hover:text-primary/80 transition-colors"
+                >
+                  {t.login.changePhone}
+                </button>
+                <button
+                  onClick={() => {}}
+                  className="text-sm text-primary font-medium hover:text-primary/80 transition-colors"
+                >
+                  Resend OTP
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
 
       {/* Guest Mode */}
-      <footer className="px-5 pb-12 fade-in-up-delay-1">
+      <footer className="px-5 pb-12 mt-8 animate-fade-in-up-delay-1">
         <div className="space-y-4">
           <div className="flex items-center justify-center">
             <div className="flex-1 h-px bg-border"></div>
@@ -142,11 +150,11 @@ const Login = () => {
           <Button
             onClick={handleGuestMode}
             variant="secondary"
-            className="w-full h-14 text-base font-semibold rounded-xl"
+            className="w-full h-14 text-base font-semibold rounded-xl bg-card hover:bg-card/80 text-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
           >
             Continue without login
           </Button>
-          <p className="text-center text-xs text-muted-foreground">
+          <p className="text-center text-xs text-muted-foreground max-w-xs mx-auto">
             You can try the app before signing in.
           </p>
         </div>

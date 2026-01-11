@@ -97,12 +97,12 @@ const Coaching = () => {
   };
 
   return (
-    <div className="app-container pb-32">
+    <div className="app-container pb-32 bg-gradient-to-b from-background to-background/95">
       {/* Header */}
-      <header className="px-5 pt-6 pb-4 flex items-center sticky top-0 bg-background/95 backdrop-blur-sm z-10">
+      <header className="px-5 pt-6 pb-4 flex items-center sticky top-0 bg-background/95 backdrop-blur-sm z-10 shadow-lg border-b border-border">
         <button
           onClick={() => navigate(-1)}
-          className="p-2 -ml-2 rounded-full hover:bg-muted transition-colors"
+          className="p-2 -ml-2 rounded-full hover:bg-muted transition-colors transform hover:scale-110 duration-200"
         >
           <ArrowLeft className="w-5 h-5 text-foreground" />
         </button>
@@ -117,8 +117,8 @@ const Coaching = () => {
       </header>
 
       {/* Problem Statement */}
-      <section className="px-5 mb-6 fade-in-up">
-        <div className="bg-secondary/50 rounded-xl p-4 border border-border">
+      <section className="px-5 mb-6 animate-fade-in-up">
+        <div className="bg-card rounded-xl p-4 border border-border shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm">
           <p className="text-sm text-muted-foreground mb-1">{t.coaching.yourConcern}</p>
           <p className="text-foreground font-medium">
             "Students are distracted during group activity"
@@ -134,13 +134,13 @@ const Coaching = () => {
             type={card.type}
             title={card.title}
             content={card.content}
-            className={`fade-in-up-delay-${index + 1}`}
+            className={`fade-in-up-delay-${index + 1} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}
           />
         ))}
       </section>
 
       {/* Suggestion Bar */}
-      <section className="px-5 mb-8">
+      <section className="px-5 mb-8 animate-fade-in-up-delay-2">
         <p className="text-xs text-muted-foreground uppercase tracking-wide mb-3">
           {t.coaching.quickAdjustments}
         </p>
@@ -150,15 +150,16 @@ const Coaching = () => {
               key={suggestion}
               label={suggestion}
               onClick={() => {}}
+              className="hover:scale-105 transition-all duration-200"
             />
           ))}
         </div>
       </section>
 
       {/* Student Performance-Based Suggestions */}
-      <section className="px-5 mb-8">
+      <section className="px-5 mb-8 animate-fade-in-up-delay-3">
         <div 
-          className="flex items-center justify-between mb-4 cursor-pointer"
+          className="flex items-center justify-between mb-4 cursor-pointer hover:text-primary transition-colors"
           onClick={() => setShowPerformanceSection(!showPerformanceSection)}
         >
           <h2 className="text-base font-medium text-foreground">
@@ -179,9 +180,9 @@ const Coaching = () => {
             <div className="grid grid-cols-3 gap-3 mb-6">
               <button
                 onClick={() => setSelectedLevel(prev => prev === 'fast' ? null : 'fast')}
-                className={`p-3 rounded-xl border transition-all ${selectedLevel === 'fast' 
-                  ? 'border-primary bg-primary/10 text-primary'
-                  : 'border-border bg-card hover:bg-secondary/50'}`}
+                className={`p-3 rounded-xl border transition-all duration-300 shadow-lg hover:shadow-xl ${selectedLevel === 'fast' 
+                  ? 'border-primary bg-primary/10 text-primary transform scale-105'
+                  : 'border-border bg-card hover:bg-secondary hover:border-primary/50'}`}
               >
                 <p className="text-sm font-medium">{t.coaching.performance.fastFinishers.title}</p>
                 <p className="text-xs text-muted-foreground mt-1">
@@ -191,9 +192,9 @@ const Coaching = () => {
               
               <button
                 onClick={() => setSelectedLevel(prev => prev === 'onTrack' ? null : 'onTrack')}
-                className={`p-3 rounded-xl border transition-all ${selectedLevel === 'onTrack' 
-                  ? 'border-primary bg-primary/10 text-primary'
-                  : 'border-border bg-card hover:bg-secondary/50'}`}
+                className={`p-3 rounded-xl border transition-all duration-300 shadow-lg hover:shadow-xl ${selectedLevel === 'onTrack' 
+                  ? 'border-primary bg-primary/10 text-primary transform scale-105'
+                  : 'border-border bg-card hover:bg-secondary hover:border-primary/50'}`}
               >
                 <p className="text-sm font-medium">{t.coaching.performance.onTrack.title}</p>
                 <p className="text-xs text-muted-foreground mt-1">
@@ -203,9 +204,9 @@ const Coaching = () => {
               
               <button
                 onClick={() => setSelectedLevel(prev => prev === 'struggling' ? null : 'struggling')}
-                className={`p-3 rounded-xl border transition-all ${selectedLevel === 'struggling' 
-                  ? 'border-primary bg-primary/10 text-primary'
-                  : 'border-border bg-card hover:bg-secondary/50'}`}
+                className={`p-3 rounded-xl border transition-all duration-300 shadow-lg hover:shadow-xl ${selectedLevel === 'struggling' 
+                  ? 'border-primary bg-primary/10 text-primary transform scale-105'
+                  : 'border-border bg-card hover:bg-secondary hover:border-primary/50'}`}
               >
                 <p className="text-sm font-medium">{t.coaching.performance.struggling.title}</p>
                 <p className="text-xs text-muted-foreground mt-1">
@@ -220,7 +221,7 @@ const Coaching = () => {
                 {performanceSuggestions[selectedLevel].map((suggestion, index) => (
                   <div 
                     key={index}
-                    className={`bg-card rounded-xl p-4 border border-border shadow-sm fade-in-up-delay-${index + 1}`}
+                    className={`bg-card rounded-xl p-4 border border-border shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 fade-in-up-delay-${index + 1}`}
                   >
                     <h3 className="font-medium text-foreground text-sm mb-2">{suggestion.title}</h3>
                     <p className="text-sm text-muted-foreground">{suggestion.content}</p>
@@ -233,21 +234,21 @@ const Coaching = () => {
       </section>
 
       {/* Feedback Section */}
-      <section className="px-5">
+      <section className="px-5 animate-fade-in-up-delay-4">
         <p className="text-sm text-muted-foreground text-center mb-4">
           {t.coaching.didThisHelp}
         </p>
         <div className="flex gap-3">
           <button
             onClick={() => handleFeedback(true)}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-coaching-explain text-coaching-explain-accent font-medium transition-all hover:opacity-90 active:scale-98"
+            className="flex-1 flex items-center justify-center gap-2 py-4 px-4 rounded-xl bg-gradient-to-r from-coaching-explain to-coaching-explain/90 text-coaching-explain-accent font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-98"
           >
             <ThumbsUp className="w-5 h-5" />
             <span>{t.coaching.thisWorked}</span>
           </button>
           <button
             onClick={() => handleFeedback(false)}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-muted text-muted-foreground font-medium transition-all hover:bg-muted/80 active:scale-98"
+            className="flex-1 flex items-center justify-center gap-2 py-4 px-4 rounded-xl bg-card border border-border text-muted-foreground font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:border-primary/50 transform hover:-translate-y-0.5 active:scale-98"
           >
             <RotateCcw className="w-5 h-5" />
             <span>{t.coaching.tryAgain}</span>
@@ -256,11 +257,11 @@ const Coaching = () => {
       </section>
 
       {/* Peer Wisdom Button */}
-      <section className="px-5 mt-6">
+      <section className="px-5 mt-6 animate-fade-in-up-delay-5">
         <Button
           onClick={() => navigate("/peer-wisdom")}
           variant="secondary"
-          className="w-full h-14 text-base font-semibold rounded-xl"
+          className="w-full h-14 text-base font-semibold rounded-xl bg-card hover:bg-card/80 text-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
         >
           <span>{t.nav.peerWisdom}</span>
         </Button>
