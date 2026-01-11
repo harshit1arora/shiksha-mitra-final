@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import BottomNav from "@/components/BottomNav";
 import LanguageToggle from "@/components/LanguageToggle";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Profile = () => {
@@ -12,16 +13,19 @@ const Profile = () => {
   return (
     <div className="app-container pb-24">
       {/* Header */}
-      <header className="px-5 pt-6 pb-4 flex items-center">
-        <button
-          onClick={() => navigate(-1)}
-          className="p-2 -ml-2 rounded-full hover:bg-muted transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 text-foreground" />
-        </button>
-        <h1 className="text-lg font-semibold text-foreground ml-2">
-          {t.profile.title}
-        </h1>
+      <header className="px-5 pt-6 pb-4 flex items-center justify-between">
+        <div className="flex items-center">
+          <button
+            onClick={() => navigate(-1)}
+            className="p-2 -ml-2 rounded-full hover:bg-muted transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 text-foreground" />
+          </button>
+          <h1 className="text-lg font-semibold text-foreground ml-2">
+            {t.profile.title}
+          </h1>
+        </div>
+        <ThemeToggle />
       </header>
 
       {/* Profile Info */}
