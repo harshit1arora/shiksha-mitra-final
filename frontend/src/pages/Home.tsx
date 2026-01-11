@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ClassChip from "@/components/ClassChip";
 import SubjectCard from "@/components/SubjectCard";
 import BottomNav from "@/components/BottomNav";
+import ThemeToggle from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Clock, MessageSquare, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -41,6 +42,7 @@ const Home = () => {
               <p className="text-white/90 text-sm">Teaching Coach</p>
             </div>
           </div>
+          <ThemeToggle />
         </div>
         
         {/* Welcome Message */}
